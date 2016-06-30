@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+           ">
+    <aop:config></aop:config>
+
+    <!-- 数据源 -->
+    <bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://139.196.149.131:3306/eqianyuan?useUnicode=true&amp;characterEncoding=UTF-8"></property>
+        <property name="username" value="jason" />
+        <property name="password" value="123456" />
+        <!-- 数据库连接池保持的最小连接数 -->
+        <property name="minIdle" value="5" />
+        <!-- 数据库连接池保持的最大连接数 -->
+        <property name="maxIdle" value="30" />
+        <!-- 取得连接时是否进行有效性验证 -->
+        <property name="testOnBorrow" value="true" />
+        <!-- 返回连接时是否进行有效性验证 -->
+        <property name="testOnReturn" value="true" />
+        <!-- 连接空闲时是否进行有效性验证 -->
+        <property name="testWhileIdle" value="true" />
+    </bean>
+
+    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="datasource" />
+        <!-- 自动扫描mapping.xml文件 -->
+        <property name="mapperLocations" value="classpath*:mapping/*.xml"></property>
+    </bean>
+
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.eqianyuan.erp.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sessionFactory"></property>
+    </bean>
+</beans>

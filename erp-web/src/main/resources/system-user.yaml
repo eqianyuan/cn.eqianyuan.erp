@@ -1,0 +1,9 @@
+- !!cn.eqianyuan.erp.entity.SystemUserBo
+  userName: jason
+  password: ACC0AA297D5BBD540006807C57C0AFFB
+- !!cn.eqianyuan.erp.entity.SystemUserBo
+  userName: zhangqing
+  password: A3C8C3FBCDF68C2C207BC46D927A9003
+- !!cn.eqianyuan.erp.entity.SystemUserBo
+  userName: liuchao
+  password: D67946AB2B57A1E4A04B6114ECDC06A5

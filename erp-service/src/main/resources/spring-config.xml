@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="systemErrMsg" class="org.springframework.beans.factory.config.YamlMapFactoryBean">
+        <property name="resources">
+            <list>
+                <value>classpath*:system-err-msg.yaml</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="cn.eqianyuan.erp.common.util.yaml.YamlForSystemErrMsg">
+        <property name="systemErrMsg" ref="systemErrMsg"/>
+    </bean>
+</beans>

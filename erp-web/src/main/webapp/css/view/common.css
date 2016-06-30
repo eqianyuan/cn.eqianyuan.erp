@@ -1,0 +1,19 @@
+/**
+    分页组件居右的样式，公共样式，每个table页面都要引用
+ */
+.pagination-right{
+    float:right;}
+
+/**
+ 表格页面搜索条件面板样式
+ */
+.panel-search{
+    padding-bottom:0px;
+}
+
+/**
+    表单校验提示样式
+*/
+.help-block.tip{
+    display:none;
+    color: #ff0000;}

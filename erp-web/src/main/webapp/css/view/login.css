@@ -1,0 +1,26 @@
+/*
+    登录验证码输入框样式
+    1.输入框浮动，便于让验证码图片能够在右侧同行显示
+    2.输入框长度缩小
+*/
+.form-control.verification-code-ipt{
+    float:left;
+    width: 60%;
+}
+
+/*
+    登录验证码样式
+    登录验证码图片距左边输入框10PX
+*/
+.verification-code-img{
+    margin-left: 10px;
+}
+
+/* 登录错误信息提示样式
+    1.错误内容居中显示
+    2.错误内容文字颜色为红色
+ */
+.login_fail_tip{
+    margin-left: 33%;
+    color: #ff0000;
+}

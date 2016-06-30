@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.eqianyuan.erp.dao.IFiscalDetailDao">
+    <resultMap id="BaseResultMap" type="cn.eqianyuan.erp.entity.FiscalDetail">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="USERNAME" property="userName" jdbcType="VARCHAR"/>
+        <result column="TYPE" property="type" jdbcType="INTEGER"/>
+        <result column="COST" property="cost" jdbcType="DOUBLE"/>
+        <result column="CREATETIME" property="createTime" jdbcType="INTEGER"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="cn.eqianyuan.erp.entity.FiscalDetail" extends="BaseResultMap">
+        <result column="DESCRIPTION" property="description" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, USERNAME, TYPE, COST, CREATETIME
+  </sql>
+    <sql id="Blob_Column_List">
+    DESCRIPTION
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from fiscal_detail
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <sql id="conditionByPagination">
+        <where>
+            <if test="userName != null">
+                userName like '%${userName}%'
+            </if>
+        </where>
+    </sql>
+    <select id="countByPagination" resultType="java.lang.Long">
+        select count(1) from fiscal_detail
+        <include refid="conditionByPagination"/>
+    </select>
+    <select id="selectByPagination" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from fiscal_detail
+        <include refid="conditionByPagination"/>
+        order by createTime desc
+        limit ${page.pageNo}, ${page.pageSize}
+    </select>
+    <insert id="insertSelective" parameterType="cn.eqianyuan.erp.entity.FiscalDetail">
+        insert into fiscal_detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="userName != null">
+                USERNAME,
+            </if>
+            <if test="type != null">
+                TYPE,
+            </if>
+            <if test="cost != null">
+                COST,
+            </if>
+            <if test="createTime != null">
+                CREATETIME,
+            </if>
+            <if test="description != null">
+                DESCRIPTION,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="cost != null">
+                #{cost,jdbcType=DOUBLE},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=INTEGER},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+</mapper>

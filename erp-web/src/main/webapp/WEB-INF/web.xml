@@ -1,0 +1,36 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="schedule-console" version="3.0">
+
+    <!-- 监听SOCKET通信接口 -->
+    <listener>
+        <listener-class>cn.eqianyuan.erp.common.listener.UpperComputerSocketContextListener</listener-class>
+    </listener>
+    <!-- 核心控制器 -->
+    <servlet>
+        <servlet-name>mvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- 加载SpringMVC的xml到 spring的上下文容器中 -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath*:spring-*.xml;</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- REST风格请求，所有请求都会被拦截器拦截，包括静态资源 -->
+    <servlet-mapping>
+        <servlet-name>mvc</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <!--<welcome-file>/WEB-INF/view/login.jsp</welcome-file>-->
+        <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
