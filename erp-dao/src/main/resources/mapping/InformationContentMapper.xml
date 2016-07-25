@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.eqianyuan.erp.dao.InformationContentDao" >
+  <resultMap id="BaseResultMap" type="cn.eqianyuan.erp.entity.InformationContent" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="urladdress" property="urladdress" jdbcType="VARCHAR" />
+    <result column="instructions" property="instructions" jdbcType="VARCHAR" />
+    <result column="submission" property="submission" jdbcType="VARCHAR" />
+    <result column="parameter" property="parameter" jdbcType="VARCHAR" />
+    <result column="responsecontent" property="responsecontent" jdbcType="VARCHAR" />
+    <result column="errorreporting" property="errorreporting" jdbcType="VARCHAR" />
+    <result column="organization_id" property="organizationId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, urladdress, instructions, submission, parameter, responsecontent, errorreporting, organization_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from informationcontent
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <!--分页查询-->
+  <select id="selectByPagination" resultMap="BaseResultMap">
+    select * from informationcontent
+    limit ${page.pageNo}, ${page.pageSize}
+  </select>
+
+  <!--查询数据总条数-->
+  <select id="countByPagination" resultType="java.lang.Long">
+    select count(1) from informationcontent
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from informationcontent
+    where id in
+    <foreach item="item" collection="id" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+
+  <insert id="insertSelective" parameterType="cn.eqianyuan.erp.entity.InformationContent" >
+    insert into informationcontent
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="urladdress != null" >
+        urladdress,
+      </if>
+      <if test="instructions != null" >
+        instructions,
+      </if>
+      <if test="submission != null" >
+        submission,
+      </if>
+      <if test="parameter != null" >
+        parameter,
+      </if>
+      <if test="responsecontent != null" >
+        responsecontent,
+      </if>
+      <if test="errorreporting != null" >
+        errorreporting,
+      </if>
+      <if test="organizationId != null" >
+        organization_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="urladdress != null" >
+        #{urladdress,jdbcType=VARCHAR},
+      </if>
+      <if test="instructions != null" >
+        #{instructions,jdbcType=VARCHAR},
+      </if>
+      <if test="submission != null" >
+        #{submission,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter != null" >
+        #{parameter,jdbcType=VARCHAR},
+      </if>
+      <if test="responsecontent != null" >
+        #{responsecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="errorreporting != null" >
+        #{errorreporting,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.eqianyuan.erp.entity.InformationContent" >
+    update informationcontent
+    <set >
+      <if test="urladdress != null" >
+        urladdress = #{urladdress,jdbcType=VARCHAR},
+      </if>
+      <if test="instructions != null" >
+        instructions = #{instructions,jdbcType=VARCHAR},
+      </if>
+      <if test="submission != null" >
+        submission = #{submission,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter != null" >
+        parameter = #{parameter,jdbcType=VARCHAR},
+      </if>
+      <if test="responsecontent != null" >
+        responsecontent = #{responsecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="errorreporting != null" >
+        errorreporting = #{errorreporting,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationId!= null" >
+        organization_id = #{organizationId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

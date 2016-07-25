@@ -73,3 +73,107 @@
   cn: 数据不存在
   en: data no exists
 ##### 财政收支错误描述 错误 #####
+
+##### 公司信息描述 开始 #####
+10030001:
+  code: 404
+  cn: 数据不存在
+  en: data no exists
+
+10030002:
+  code: 404
+  cn: 数据不存在
+  en: data no exists
+
+10030003:
+  code: 404
+  cn: 公司名称不存在
+  en: data no exists
+
+10030004:
+  code: 404
+  cn: 详细信息描述为空
+  en: data no exists
+##### 公司信息描述 错误 #####
+
+##### 链接信息存放 开始 #####
+10040001:
+  code: 404
+  cn: 链接地址为空
+  en: data no exists
+
+10040002:
+  code: 404
+  cn: 描述为空
+  en: data no exists
+
+10040003:
+  code: 404
+  cn: 请求方式为空
+  en: data no exists
+
+10040004:
+  code: 404
+  cn: 参数信息为空
+  en: data no exists
+
+10040005:
+  code: 404
+  cn: 响应内容信息为空
+  en: data no exists
+
+10040006:
+  code: 404
+  cn: 错误日志容信息为空
+  en: data no exists
+
+10040007:
+  code: 400
+  cn: 详细描述内容长度过长
+  en: data no exists
+
+10040008:
+  code: 400
+  cn: 公司名称内容过长
+  en: data no exists
+
+10040009:
+  code: 400
+  cn: 公司名称不能为空
+  en: data no exists
+
+10040010:
+  code: 400
+  cn: 链接地址不能为空
+  en: data no exists
+
+10040011:
+  code: 400
+  cn: 网址内容过长
+  en: data no exists
+
+10040012:
+  code: 400
+  cn: 所属机构、项目id不能为空
+  en: data no exists
+
+10040013:
+  code: 400
+  cn: 提交方式内容长度过长
+  en: data no exists
+
+10040014:
+  code: 400
+  cn: 参数内容长度过长
+  en: data no exists
+
+10040015:
+  code: 400
+  cn: 响应内容长度过长
+  en: data no exists
+
+10040016:
+  code: 400
+  cn: 错误报告内容长度过长
+  en: data no exists
+##### 链接信息存放 错误 #####

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.eqianyuan.erp.dao.OrganizationMapperDao" >
+  <resultMap id="BaseResultMap" type="cn.eqianyuan.erp.entity.Organization" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="details" property="details" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, details
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from organization
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <!--查询项目名称-->
+  <select id="selectKeyName" resultMap="BaseResultMap">
+     select id, name from organization
+  </select>
+
+  <!--分页查询-->
+  <select id="selectByPagination" resultMap="BaseResultMap">
+    select * from organization
+    limit ${page.pageNo}, ${page.pageSize}
+  </select>
+
+  <!--查询数据总条数-->
+  <select id="countByPagination" resultType="java.lang.Long">
+    select count(1) from organization
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from organization
+    where id in
+    <foreach item="item" collection="id" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+
+  <insert id="insert" parameterType="cn.eqianyuan.erp.entity.Organization" >
+    insert into organization (id, name, details)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{details,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="cn.eqianyuan.erp.entity.Organization" >
+    insert into organization
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="details != null" >
+        details,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null" >
+        #{details,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.eqianyuan.erp.entity.Organization" >
+    update organization
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null" >
+        details = #{details,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.eqianyuan.erp.entity.Organization" >
+    update organization
+    set name = #{name,jdbcType=VARCHAR},
+      details = #{details,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

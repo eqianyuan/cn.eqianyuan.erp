@@ -35,6 +35,7 @@ public class SystemConstant {
      */
     public static final String SYSTEM_MANAGE_LOGIN_BY_PAGE = "login";
 
+    public static final String SYSTEM_MANAGE_HOME_BY_PAGE = "home";
     /**
      * 系统后台财政明细列表页面
      */
@@ -44,6 +45,22 @@ public class SystemConstant {
      * 系统后台财政明细添加页面
      */
     public static final String MANAGE_FISCAL_DETAIL_ADD_BY_PAGE = SYSTEM_SEPARATOR + "fiscal detail" + SYSTEM_SEPARATOR + "add";
+
+    /**
+     * 系统后台API明细添加页面
+     */
+    public static final String API_DETAIL_ADD_BY_PAGE = SYSTEM_SEPARATOR + "inforcontent" + SYSTEM_SEPARATOR + "inforcontentadd";
+
+    /**
+     * 系统后台公司明细页面
+     */
+    public static final String COMPANY_DETAILS_PAGE = SYSTEM_SEPARATOR + "organization" + SYSTEM_SEPARATOR + "list";
+
+    /**
+     * 系统后台公司明细添加页面
+     */
+    public static final String COMPANY_ADD_PAGE = SYSTEM_SEPARATOR + "organization" + SYSTEM_SEPARATOR + "add";
+
 
     /**
      * 单个CPU线程池大小
