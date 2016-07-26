@@ -84,6 +84,8 @@
                                             <option value="张庆">张庆</option>
                                             <option value="刘超">刘超</option>
                                             <option value="孙杰翔">孙杰翔</option>
+                                            <option value="许贤文">许贤文</option>
+                                            <option value="公司">公司</option>
                                         </select>
                                         <p class="help-block tip">tip.</p>
                                     </div>

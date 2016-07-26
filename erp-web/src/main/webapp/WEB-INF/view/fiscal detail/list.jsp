@@ -78,7 +78,15 @@
                     </div>
                     <div class="panel-body panel-search">
                         <fieldset class="form-inline">
-                            <label contenteditable="true">用户姓名</label> <input placeholder="请输入用户名..." type="text" id="search_by_userName">
+                            <label contenteditable="true">用户姓名</label>
+                            <select class="form-control" id="search_by_userName">
+                                <option value="张庆">张庆</option>
+                                <option value="刘超">刘超</option>
+                                <option value="孙杰翔">孙杰翔</option>
+                                <option value="许贤文">许贤文</option>
+                                <option value="公司">公司</option>
+                            </select>
+                            <%--<input placeholder="请输入用户名..." type="text" id="search_by_userName">--%>
                             <button type="button" class="btn btn-default btn-sm" id="search">筛选查找</button>
                         </fieldset>
                     </div>
