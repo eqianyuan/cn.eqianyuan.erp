@@ -103,7 +103,7 @@
                         $("#form-tip").removeClass("hidden alert-warning").addClass("alert-success").show().find("strong").text(response.message);
 
                         setTimeout(function () {
-                            window.location.href = "/gotoPage?url=organization/list";
+                            window.location.href = "/system-manage/gotoPage?url=organization/list";
                         }, 500);
                     } else {
                         $("#form-tip").removeClass("hidden alert-success").addClass("alert-warning").show().find("strong").text(response.message);
